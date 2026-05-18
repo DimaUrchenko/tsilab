@@ -24,6 +24,8 @@ const Header = () => {
           <Link to="/contact" style={{ color: 'white', textDecoration: 'none' }}>Контакты</Link>
           <Link to="/demo" style={{ color: 'white', textDecoration: 'none' }}>Компоненты</Link>
           <Link to="/todo" style={{ color: 'white', textDecoration: 'none' }}>Список</Link>
+          <Link to="/server" className="hover:text-blue-200 transition">Сервер</Link>
+          <Link to="/auth" className="hover:text-blue-200 transition">Вход</Link>
         </div>
       </div>
     </header>

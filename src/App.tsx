@@ -6,6 +6,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import ComponentsDemo from './pages/ComponentsDemo';
 import TodoList from './pages/TodoList';
+import ServerDemo from './pages/ServerDemo';
+import AuthPage from './pages/AuthPage';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/demo" element={<ComponentsDemo />} />
             <Route path="/todo" element={<TodoList />} />
+            <Route path="/server" element={<ServerDemo />} />
+            <Route path="/auth" element={<AuthPage />} />
           </Routes>
         </main>
         <Footer />

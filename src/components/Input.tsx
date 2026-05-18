@@ -1,5 +1,7 @@
+type InputType = "text" | "password" | "email" | "tel";
+
 interface InputProps {
-  type?: "text" | "password" | "email";
+  type?: InputType;
   placeholder?: string;
   value: string;
   onChange: (value: string) => void;
@@ -7,6 +9,7 @@ interface InputProps {
   disabled?: boolean;
   error?: string;
   className?: string;
+  required?: boolean;  // <- ДОБАВЬ ЭТУ СТРОКУ
 }
 
 export const Input = ({ 
@@ -17,13 +20,14 @@ export const Input = ({
   label, 
   disabled = false, 
   error, 
-  className = "" 
+  className = "",
+  required = false  // <- ДОБАВЬ ЭТУ СТРОКУ
 }: InputProps) => {
   return (
     <div className={`flex flex-col gap-1 w-full ${className}`}>
       {label && (
         <label className="text-sm font-medium text-gray-700">
-          {label}
+          {label} {required && <span className="text-red-500">*</span>}
         </label>
       )}
       <input
@@ -32,6 +36,7 @@ export const Input = ({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         disabled={disabled}
+        required={required}  // <- ДОБАВЬ ЭТУ СТРОКУ
         className={`
           px-3 py-2 border rounded-lg outline-none transition-all
           ${error ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"}
