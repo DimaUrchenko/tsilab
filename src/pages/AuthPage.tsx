@@ -29,13 +29,11 @@ const AuthPage = () => {
     role: 'user'
   });
 
-  // Login data
   const [loginData, setLoginData] = useState({
     email: '',
     password: ''
   });
 
-  // Validation errors
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validateRegister = () => {
@@ -131,7 +129,6 @@ const AuthPage = () => {
     setLoginData({ email: '', password: '' });
   };
 
-  // If user is logged in
   if (user) {
     return (
       <div className="max-w-md mx-auto p-8 mt-10">
@@ -183,7 +180,6 @@ const AuthPage = () => {
         )}
 
         {isLogin ? (
-          // Login form
           <div>
             <Input
               label="Email"
@@ -211,7 +207,6 @@ const AuthPage = () => {
             />
           </div>
         ) : (
-          // Registration form
           <div>
             <div className="grid grid-cols-2 gap-3">
               <Input

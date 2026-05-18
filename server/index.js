@@ -7,7 +7,6 @@ const PORT = 5001;
 app.use(cors());
 app.use(express.json());
 
-// Хранилище пользователей
 let users = [];
 
 // Регистрация
@@ -19,20 +18,18 @@ app.post('/api/register', (req, res) => {
     return res.status(400).json({ error: 'Все поля обязательны для заполнения' });
   }
   
-  // Проверка email на уникальность
   const existingUser = users.find(u => u.email === email);
   if (existingUser) {
     return res.status(400).json({ error: 'Пользователь с таким email уже существует' });
   }
   
-  // Создаём нового пользователя
   const newUser = {
     id: users.length + 1,
     firstName,
     lastName,
     phone,
     email,
-    password, // В реальном проекте нужно хешировать!
+    password,
     role: role || 'user'
   };
   
@@ -45,7 +42,6 @@ app.post('/api/register', (req, res) => {
   });
 });
 
-// Авторизация (логин)
 app.post('/api/login', (req, res) => {
   const { email, password } = req.body;
   
@@ -65,7 +61,6 @@ app.post('/api/login', (req, res) => {
   });
 });
 
-// Получить всех пользователей (только для админа)
 app.get('/api/users', (req, res) => {
   res.json(users);
 });
